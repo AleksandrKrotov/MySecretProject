@@ -7,6 +7,7 @@ OpenGLEngine::OpenGLEngine()
 
 OpenGLEngine::~OpenGLEngine()
 {
+    glfwTerminate();
 }
 
 void OpenGLEngine::Start()

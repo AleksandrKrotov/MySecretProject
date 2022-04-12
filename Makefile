@@ -16,6 +16,7 @@ CFLAGS =
 SOURCE = main.cpp\
 				SDLEngine.cpp\
 				OpenGLEngine.cpp\
+				glad.cpp\
 
 SRCPATH = src/scripts
 HDRPATH = src/headers
@@ -24,11 +25,12 @@ SDLPATH = SDL/SDL2/Headers
 
 CC = g++
 
-FLAGS = -I $(HDRPATH) -lglfw -framework Cocoa -framework OpenGL
+FLAGS = -I $(HDRPATH)
 
-SDL_FLAGS = -F ./SDL -O3
+SDL_FLAGS = -F ./SDL -O3 
 
-SDL_FRAMEWORK = -framework SDL2
+SDL_FRAMEWORK = -framework SDL2 -lglfw -framework Cocoa -framework OpenGL
+
 
 OBJ = $(addprefix $(OBJPATH)/,$(SOURCE:.cpp=.o))
 
