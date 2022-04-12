@@ -11,6 +11,7 @@ class OpenGLEngine : public IEngine
 
     private:
         void Init();
+        int CreateWindow();
 
     public:
         OpenGLEngine();

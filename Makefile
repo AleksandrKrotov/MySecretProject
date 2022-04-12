@@ -24,11 +24,11 @@ SDLPATH = SDL/SDL2/Headers
 
 CC = g++
 
-FLAGS = -I $(HDRPATH) $(pkg-config --cflags glfw3)
+FLAGS = -I $(HDRPATH) -lglfw -framework Cocoa -framework OpenGL
 
 SDL_FLAGS = -F ./SDL -O3
 
-SDL_FRAMEWORK = -framework SDL2 
+SDL_FRAMEWORK = -framework SDL2
 
 OBJ = $(addprefix $(OBJPATH)/,$(SOURCE:.cpp=.o))
 
