@@ -25,6 +25,7 @@ class OpenGLEngine : public IEngine
         VertexArray *vertexArray;
         VertexBuffer *vertexBuffer;
         ElementBuffer *elementBuffer;
+        GLuint scaleParam;
 
     public:
         OpenGLEngine();

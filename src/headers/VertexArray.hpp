@@ -11,7 +11,7 @@ class VertexArray
 
         VertexArray();
 
-        void LinkVertexBuffer(VertexBuffer &vertexBuffer, GLuint layout);
+        void LinkAttribut(VertexBuffer &vertexBuffer, GLuint layout, GLuint numComponents, GLenum type, GLsizeiptr stride, void* offset);
 
         void Bind();
         void Unbind();

@@ -18,13 +18,15 @@ class Shader
 
         void Activate();
         void Delete();
+        GLuint GetUniform(const char* param);
 
     private:
         const char* vertexSource;
         const char* fragmentSource;
 
         void InitShaderProgram();
-        void AttachShader(GLuint shaderType, const char* shaderSource);
+        void AttachShader(GLuint shaderType, const char* shaderSource, const char* shaderTypeName);
+        void compileErrors(unsigned int shader, const char* type);
 };
 
 #endif
