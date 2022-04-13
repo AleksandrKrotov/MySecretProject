@@ -17,13 +17,14 @@ SOURCE = main.cpp\
 				SDLEngine.cpp\
 				OpenGLEngine.cpp\
 				glad.cpp\
+				ShaderClass.cpp\
 
 SRCPATH = src/scripts
 HDRPATH = src/headers
 OBJPATH = obj
 SDLPATH = SDL/SDL2/Headers
 
-CC = g++ -std=c++11 -Wall
+CC = g++ -std=c++11
 
 FLAGS = -I $(HDRPATH)
 
