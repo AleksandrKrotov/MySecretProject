@@ -29,7 +29,7 @@ FLAGS = -I $(HDRPATH)
 
 SDL_FLAGS = -F ./SDL -O3 
 
-SDL_FRAMEWORK = -framework SDL2 -lglfw -framework Cocoa -framework OpenGL
+SDL_FRAMEWORK = -framework SDL2 -lglfw -framework Cocoa -framework OpenGL -lm
 
 
 OBJ = $(addprefix $(OBJPATH)/,$(SOURCE:.cpp=.o))
