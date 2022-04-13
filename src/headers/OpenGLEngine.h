@@ -7,9 +7,11 @@
 #include <GLFW/glfw3.h>
 #endif
 
-#include "IEngine.h"
 #include <iostream>
 #include <math.h>
+#include "stb_image.h"
+
+#include "IEngine.h"
 #include "Shader.hpp"
 #include "VertexArray.hpp"
 #include "VertexBuffer.hpp"
@@ -25,7 +27,8 @@ class OpenGLEngine : public IEngine
         VertexArray *vertexArray;
         VertexBuffer *vertexBuffer;
         ElementBuffer *elementBuffer;
-        GLuint scaleParam;
+        GLuint scaleParam, tex0Uni;
+        GLuint texture;
 
     public:
         OpenGLEngine();
