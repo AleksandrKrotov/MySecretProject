@@ -1,4 +1,4 @@
-#include "ShaderClass.hpp"
+#include "Shader.hpp"
 
 Shader::Shader(const char* vertexFile, const char* fragmentFile)
 {
@@ -40,7 +40,9 @@ void Shader::AttachShader(GLuint shaderType, const char* shaderSource)
 
 std::string get_file_contents(const char* filename)
 {
-    std::ifstream in(filename, std::ios::binary);
+    std::string fullPath = std::string("Shaders/") + std::string(filename);
+
+    std::ifstream in(fullPath.c_str(), std::ios::binary);
     if (in)
     {
         std::string contents;
@@ -51,5 +53,7 @@ std::string get_file_contents(const char* filename)
         in.close();
         return(contents);
     }
+
+    std::cout << "Can't load file wit path: " << fullPath << std::endl;
     throw(errno);
 }

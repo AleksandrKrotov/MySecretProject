@@ -10,12 +10,21 @@
 #include "IEngine.h"
 #include <iostream>
 #include <math.h>
+#include "Shader.hpp"
+#include "VertexArray.hpp"
+#include "VertexBuffer.hpp"
+#include "ElementBuffer.hpp"
+
 
 class OpenGLEngine : public IEngine
 {
     private:
         GLFWwindow *window;
         GLuint VAO, VBO, EBO;
+        Shader *shaderProgram;
+        VertexArray *vertexArray;
+        VertexBuffer *vertexBuffer;
+        ElementBuffer *elementBuffer;
 
     public:
         OpenGLEngine();

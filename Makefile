@@ -17,7 +17,10 @@ SOURCE = main.cpp\
 				SDLEngine.cpp\
 				OpenGLEngine.cpp\
 				glad.cpp\
-				ShaderClass.cpp\
+				Shader.cpp\
+				VertexArray.cpp\
+				VertexBuffer.cpp\
+				ElementBuffer.cpp\
 
 SRCPATH = src/scripts
 HDRPATH = src/headers
