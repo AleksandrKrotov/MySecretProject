@@ -95,7 +95,7 @@ void OpenGLEngine::InitVertexArrays()
     vertexBuffer = new VertexBuffer(vertices, sizeof(vertices));
     elementBuffer = new ElementBuffer(indices, sizeof(indices));
 
-    vertexArray->LinkVertexBuffer(vertexBuffer, 0);
+    vertexArray->LinkVertexBuffer(*vertexBuffer, 0);
     vertexArray->Unbind();
     vertexBuffer->Unbind();
     elementBuffer->Unbind();
