@@ -23,7 +23,7 @@ HDRPATH = src/headers
 OBJPATH = obj
 SDLPATH = SDL/SDL2/Headers
 
-CC = g++
+CC = g++ -std=c++11 -Wall
 
 FLAGS = -I $(HDRPATH)
 
