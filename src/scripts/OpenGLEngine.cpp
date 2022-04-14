@@ -26,26 +26,10 @@ OpenGLEngine::OpenGLEngine()
     InitVertexArrays();
 
     scaleParam = shaderProgram->GetUniform("scale");
-    int widthImg, heightImg, numColCh;
-    unsigned char* bytes = stbi_load("Textures/pop_cat.png", &widthImg, &heightImg, &numColCh, 0);
-    glGenTextures(1, &texture);
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, texture);
 
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    texure = new Texture("Textures/pop_cat.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
 
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, widthImg, heightImg, 0, GL_RGBA, GL_UNSIGNED_BYTE, bytes);
-    glGenerateMipmap(GL_TEXTURE_2D);
-    stbi_image_free(bytes);
-    glBindTexture(GL_TEXTURE_2D, 0);
-
-    tex0Uni = shaderProgram->GetUniform("tex0");
-    shaderProgram->Activate();
-    glUniform1i(tex0Uni, 0);
+    texure->texUnit(shaderProgram, "tex0", 0);
 }
 
 OpenGLEngine::~OpenGLEngine()
@@ -53,13 +37,14 @@ OpenGLEngine::~OpenGLEngine()
     vertexArray->Delete();
     vertexBuffer->Delete();
     elementBuffer->Delete();
-    glDeleteTextures(1, &texture);
     shaderProgram->Delete();
+    texure->Delete();
 
     delete(vertexArray);
     delete(vertexBuffer);
     delete(elementBuffer);
     delete(shaderProgram);
+    delete(texure);
 
     glfwDestroyWindow(window);
     glfwTerminate();
@@ -71,9 +56,13 @@ void OpenGLEngine::Start()
     {
         glClearColor(0.07f, 0.13f, 0.17f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
+
         shaderProgram->Activate();
+
         glUniform1f(scaleParam, 0.5f);
-        glBindTexture(GL_TEXTURE_2D, texture);
+
+        texure->Bind();
+
         vertexArray->Bind();
         
         glDrawElements(GL_TRIANGLES, 6,GL_UNSIGNED_INT, 0);

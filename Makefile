@@ -22,6 +22,7 @@ SOURCE = main.cpp\
 				VertexBuffer.cpp\
 				ElementBuffer.cpp\
 				stb.cpp\
+				Texture.cpp\
 
 SRCPATH = src/scripts
 HDRPATH = src/headers

@@ -16,6 +16,7 @@
 #include "VertexArray.hpp"
 #include "VertexBuffer.hpp"
 #include "ElementBuffer.hpp"
+#include "Texture.hpp"
 
 
 class OpenGLEngine : public IEngine
@@ -28,7 +29,7 @@ class OpenGLEngine : public IEngine
         VertexBuffer *vertexBuffer;
         ElementBuffer *elementBuffer;
         GLuint scaleParam, tex0Uni;
-        GLuint texture;
+        Texture* texure;
 
     public:
         OpenGLEngine();
