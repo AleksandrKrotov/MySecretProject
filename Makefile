@@ -23,19 +23,20 @@ SOURCE = main.cpp\
 				ElementBuffer.cpp\
 				stb.cpp\
 				Texture.cpp\
+				Camera.cpp\
 
 SRCPATH = src/scripts
 HDRPATH = src/headers
 OBJPATH = obj
 SDLPATH = SDL/SDL2/Headers
 
-CC = g++ -std=c++11
+CC = g++ -std=C++11 -Wall -Werror
 
 FLAGS = -I $(HDRPATH)
 
 SDL_FLAGS = -F ./SDL -O3 
 
-SDL_FRAMEWORK = -framework SDL2 -lglfw -framework Cocoa -framework OpenGL -lm
+SDL_FRAMEWORK = -framework SDL2 -lglfw -framework Cocoa -framework OpenGL -lm 
 
 
 OBJ = $(addprefix $(OBJPATH)/,$(SOURCE:.cpp=.o))

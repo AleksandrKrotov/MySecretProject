@@ -1,4 +1,4 @@
-#include "OpenGLEngine.h"
+#include "OpenGLEngine.hpp"
 
     // Vertices coordinates
     GLfloat vertices[] =
@@ -30,11 +30,11 @@ OpenGLEngine::OpenGLEngine()
     shaderProgram = new Shader("default.vert", "default.frag");
     InitVertexArrays();
 
-    scaleParam = shaderProgram->GetUniform("scale");
-
-    texure = new Texture("Textures/pop_cat.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
+    texure = new Texture("Textures/brick.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
 
     texure->texUnit(shaderProgram, "tex0", 0);
+
+    camera = new Camera(SCREEN_WIDTH, SCREEN_HEIGHT, glm::vec3(0.0f, 0.0f, 2.0f), shaderProgram->GetUniform("camMatrix"));
 }
 
 OpenGLEngine::~OpenGLEngine()
@@ -49,6 +49,7 @@ OpenGLEngine::~OpenGLEngine()
     delete(vertexBuffer);
     delete(elementBuffer);
     delete(shaderProgram);
+    delete(camera);
     delete(texure);
 
     glfwDestroyWindow(window);
@@ -57,9 +58,6 @@ OpenGLEngine::~OpenGLEngine()
 
 void OpenGLEngine::Start()
 {
-    float rotation = 0.0f;
-    double prevTime = glfwGetTime();
-
     glEnable(GL_DEPTH_TEST);
 
     while (!glfwWindowShouldClose(window))
@@ -69,30 +67,8 @@ void OpenGLEngine::Start()
 
         shaderProgram->Activate();
 
-        double curntTime = glfwGetTime();
-        if (curntTime - prevTime >= 1 / 60)
-        {
-            rotation += 0.5f;
-            prevTime = curntTime;
-        }
-
-        glm::mat4 model = glm::mat4(1.0f);
-        glm::mat4 view = glm::mat4(1.0f);
-        glm::mat4 proj = glm::mat4(1.0f);
-
-        model = glm::rotate(model, glm::radians(rotation), glm::vec3(0.0f, 1.0f, 0.0f));
-        view = glm::translate(view, glm::vec3(0.0f, -0.5f, -2.0f));
-        proj = glm::perspective(glm::radians(45.0f), (float)(SCREEN_WIDTH / SCREEN_HEIGHT), 0.1f, 100.0f);
-
-        int modelLoc = shaderProgram->GetUniform("model");
-        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-        int viewlLoc = shaderProgram->GetUniform("view");
-        glUniformMatrix4fv(viewlLoc, 1, GL_FALSE, glm::value_ptr(view));
-        int projLoc = shaderProgram->GetUniform("proj");
-        glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(proj));
-
-
-        glUniform1f(scaleParam, 0.5f);
+        camera->Inputs(window);
+        camera->Matrix(45.0f, 0.1f, 100.0f);
 
         texure->Bind();
 

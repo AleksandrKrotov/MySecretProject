@@ -1,4 +1,4 @@
-#include "SDLEngine.h"
+#include "SDLEngine.hpp"
 
 SDLEngine::SDLEngine()
 {

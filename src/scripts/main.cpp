@@ -1,7 +1,7 @@
 #include <iostream>
-#include "SDLEngine.h"
-#include "IEngine.h"
-#include "OpenGLEngine.h"
+#include "SDLEngine.hpp"
+#include "IEngine.hpp"
+#include "OpenGLEngine.hpp"
 
 
 int main(int argc, char *argv[])
