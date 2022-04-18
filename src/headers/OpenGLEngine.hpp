@@ -27,12 +27,11 @@ class OpenGLEngine : public IEngine
 {
     private:
         GLFWwindow*     window;
-        GLuint          VAO, VBO, EBO;
-        Shader*         shaderProgram;
+        Shader*         shaderProgram, *lightShader;
         Camera*         camera;
-        VertexArray*    vertexArray;
-        VertexBuffer*   vertexBuffer;
-        ElementBuffer*  elementBuffer;
+        VAO*            VAOGeneral, *lightVAO;
+        VBO*            VBOGeneral, *lightVBO;
+        EBO*            EBOGeneral, *lightEBO;
         GLuint          tex0Uni;
         Texture*        texure;
 
@@ -45,6 +44,7 @@ class OpenGLEngine : public IEngine
         int Init();
         int CreateWindow();
         void InitVertexArrays();
+        void InitSceneObjects();
 };
 
 #endif

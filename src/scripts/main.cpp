@@ -1,5 +1,4 @@
 #include <iostream>
-#include "SDLEngine.hpp"
 #include "IEngine.hpp"
 #include "OpenGLEngine.hpp"
 

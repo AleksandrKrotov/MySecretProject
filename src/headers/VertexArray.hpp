@@ -4,14 +4,14 @@
 #include "glad.h"
 #include "VertexBuffer.hpp"
 
-class VertexArray
+class VAO
 {
     public:
         GLuint ID;
 
-        VertexArray();
+        VAO();
 
-        void LinkAttribut(VertexBuffer &vertexBuffer, GLuint layout, GLuint numComponents, GLenum type, GLsizeiptr stride, void* offset);
+        void LinkAttribut(VBO *vertexBuffer, GLuint layout, GLuint numComponents, GLenum type, GLsizeiptr stride, void* offset);
 
         void Bind();
         void Unbind();

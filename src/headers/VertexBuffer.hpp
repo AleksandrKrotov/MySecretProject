@@ -3,12 +3,12 @@
 
 #include "glad.h"
 
-class VertexBuffer
+class VBO
 {
     public:
         GLuint ID;
 
-        VertexBuffer(GLfloat* vertices, GLsizeiptr size);
+        VBO(GLfloat* vertices, GLsizeiptr size);
 
         void Bind();
         void Unbind();

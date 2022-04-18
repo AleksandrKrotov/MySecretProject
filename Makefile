@@ -14,7 +14,6 @@ NAME = MySecretProject
 CFLAGS =
 
 SOURCE = main.cpp\
-				SDLEngine.cpp\
 				OpenGLEngine.cpp\
 				glad.cpp\
 				Shader.cpp\
@@ -30,13 +29,11 @@ HDRPATH = src/headers
 OBJPATH = obj
 SDLPATH = SDL/SDL2/Headers
 
-CC = g++ -std=C++11 -Wall -Werror
+CC = clang++ -std=C++11 -Wall -Werror -g -O2 
 
 FLAGS = -I $(HDRPATH)
 
-SDL_FLAGS = -F ./SDL -O3 
-
-SDL_FRAMEWORK = -framework SDL2 -lglfw -framework Cocoa -framework OpenGL -lm 
+LIBRARY_FLAGS = -lglfw -framework Cocoa -framework OpenGL -lm 
 
 
 OBJ = $(addprefix $(OBJPATH)/,$(SOURCE:.cpp=.o))
@@ -50,7 +47,7 @@ load:
 
 $(NAME): $(OBJ)
 	@echo $(END)
-	@$(CC) $(FLAGS) $(SDL_FLAGS) $(SDL_FRAMEWORK) -o $(NAME) $^
+	@$(CC) $(FLAGS) $(LIBRARY_FLAGS) -o $(NAME) $^
 	@echo $(GREEN)"   $(NAME) installed"$(END)
 
 $(OBJPATH)/%.o: $(SRCPATH)/%.cpp $(SRCPATH)/%.cpp
@@ -66,8 +63,5 @@ fclean: clean
 	@echo '\033[0;31m'"$(NAME) uninstalled"'\033[0m'
 
 re: fclean all
-
-sdl2:
-	cp -r libraries/SDL/SDL2.framework ~/Library/Frameworks/
 
 .PHONY: all lib clean fclean re

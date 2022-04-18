@@ -32,6 +32,7 @@ void Shader::InitShaderProgram()
     AttachShader(GL_VERTEX_SHADER, vertexSource, "VERTEX");
     AttachShader(GL_FRAGMENT_SHADER, fragmentSource, "FRAGMENT");
     glLinkProgram(ID);
+    compileErrors(ID, "PROGRAM");
 }
 
 void Shader::AttachShader(GLuint shaderType, const char* shaderSource, const char* shaderTypeName)
