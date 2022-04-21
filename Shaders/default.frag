@@ -23,14 +23,21 @@ uniform vec3 lightPos;
 // Gets the position of the camera from the main function
 uniform vec3 camPos;
 
-void main()
+
+
+vec4 pointLight()
 {
-	// ambient lighting
+   vec3 lightVec = lightPos - crntPos;
+   float dist = length(lightVec);
+   float a = 0.05f;
+   float b = 0.01f;
+   float inten = 1.0f / (a * dist * dist + b * dist + 1.0f);
+   // ambient lighting
 	float ambient = 0.20f;
 
 	// diffuse lighting
 	vec3 normal = normalize(Normal);
-	vec3 lightDirection = normalize(lightPos - crntPos);
+	vec3 lightDirection = normalize(lightVec);
 	float diffuse = max(dot(normal, lightDirection), 0.0f);
 
 	// specular lighting
@@ -41,5 +48,10 @@ void main()
 	float specular = specAmount * specularLight;
 
 	// outputs final color
-	FragColor = (texture(tex0, texCoord) * (diffuse + ambient) + texture(tex1, texCoord).r * specular) * lightColor;
+	return (texture(tex0, texCoord) * (diffuse * inten + ambient) + texture(tex1, texCoord).r * specular * inten) * lightColor;
+}
+
+void main()
+{
+	FragColor = pointLight();
 }
