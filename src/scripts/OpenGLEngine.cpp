@@ -2,65 +2,46 @@
 
 // Vertices coordinates
 GLfloat vertices[] =
-{ //     COORDINATES     /        COLORS          /    TexCoord   /        NORMALS       //
-	-0.5f, 0.0f,  0.5f,     0.83f, 0.70f, 0.44f, 	 0.0f, 0.0f,      0.0f, -1.0f, 0.0f, // Bottom side
-	-0.5f, 0.0f, -0.5f,     0.83f, 0.70f, 0.44f,	 0.0f, 5.0f,      0.0f, -1.0f, 0.0f, // Bottom side
-	 0.5f, 0.0f, -0.5f,     0.83f, 0.70f, 0.44f,	 5.0f, 5.0f,      0.0f, -1.0f, 0.0f, // Bottom side
-	 0.5f, 0.0f,  0.5f,     0.83f, 0.70f, 0.44f,	 5.0f, 0.0f,      0.0f, -1.0f, 0.0f, // Bottom side
-
-	-0.5f, 0.0f,  0.5f,     0.83f, 0.70f, 0.44f, 	 0.0f, 0.0f,     -0.8f, 0.5f,  0.0f, // Left Side
-	-0.5f, 0.0f, -0.5f,     0.83f, 0.70f, 0.44f,	 5.0f, 0.0f,     -0.8f, 0.5f,  0.0f, // Left Side
-	 0.0f, 0.8f,  0.0f,     0.92f, 0.86f, 0.76f,	 2.5f, 5.0f,     -0.8f, 0.5f,  0.0f, // Left Side
-
-	-0.5f, 0.0f, -0.5f,     0.83f, 0.70f, 0.44f,	 5.0f, 0.0f,      0.0f, 0.5f, -0.8f, // Non-facing side
-	 0.5f, 0.0f, -0.5f,     0.83f, 0.70f, 0.44f,	 0.0f, 0.0f,      0.0f, 0.5f, -0.8f, // Non-facing side
-	 0.0f, 0.8f,  0.0f,     0.92f, 0.86f, 0.76f,	 2.5f, 5.0f,      0.0f, 0.5f, -0.8f, // Non-facing side
-
-	 0.5f, 0.0f, -0.5f,     0.83f, 0.70f, 0.44f,	 0.0f, 0.0f,      0.8f, 0.5f,  0.0f, // Right side
-	 0.5f, 0.0f,  0.5f,     0.83f, 0.70f, 0.44f,	 5.0f, 0.0f,      0.8f, 0.5f,  0.0f, // Right side
-	 0.0f, 0.8f,  0.0f,     0.92f, 0.86f, 0.76f,	 2.5f, 5.0f,      0.8f, 0.5f,  0.0f, // Right side
-
-	 0.5f, 0.0f,  0.5f,     0.83f, 0.70f, 0.44f,	 5.0f, 0.0f,      0.0f, 0.5f,  0.8f, // Facing side
-	-0.5f, 0.0f,  0.5f,     0.83f, 0.70f, 0.44f, 	 0.0f, 0.0f,      0.0f, 0.5f,  0.8f, // Facing side
-	 0.0f, 0.8f,  0.0f,     0.92f, 0.86f, 0.76f,	 2.5f, 5.0f,      0.0f, 0.5f,  0.8f  // Facing side
+{ //     COORDINATES     /        COLORS        /    TexCoord    /       NORMALS     //
+	-1.0f, 0.0f,  1.0f,		0.0f, 0.0f, 0.0f,		0.0f, 0.0f,		0.0f, 1.0f, 0.0f,
+	-1.0f, 0.0f, -1.0f,		0.0f, 0.0f, 0.0f,		0.0f, 1.0f,		0.0f, 1.0f, 0.0f,
+	 1.0f, 0.0f, -1.0f,		0.0f, 0.0f, 0.0f,		1.0f, 1.0f,		0.0f, 1.0f, 0.0f,
+	 1.0f, 0.0f,  1.0f,		0.0f, 0.0f, 0.0f,		1.0f, 0.0f,		0.0f, 1.0f, 0.0f
 };
-
 // Indices for vertices order
 GLuint indices[] =
 {
 	0, 1, 2, // Bottom side
 	0, 2, 3, // Bottom side
-	4, 6, 5, // Left side
-	7, 9, 8, // Non-facing side
-	10, 12, 11, // Right side
-	13, 15, 14 // Facing side
 };
 
 GLfloat lightVertices[] =
-    { //     COORDINATES     //
-        -0.1f, -0.1f, 0.1f,
-        -0.1f, -0.1f, -0.1f,
-        0.1f, -0.1f, -0.1f,
-        0.1f, -0.1f, 0.1f,
-        -0.1f, 0.1f, 0.1f,
-        -0.1f, 0.1f, -0.1f,
-        0.1f, 0.1f, -0.1f,
-        0.1f, 0.1f, 0.1f};
+{ //     COORDINATES     //
+	-0.1f, -0.1f,  0.1f,
+	-0.1f, -0.1f, -0.1f,
+	 0.1f, -0.1f, -0.1f,
+	 0.1f, -0.1f,  0.1f,
+	-0.1f,  0.1f,  0.1f,
+	-0.1f,  0.1f, -0.1f,
+	 0.1f,  0.1f, -0.1f,
+	 0.1f,  0.1f,  0.1f
+};
 
 GLuint lightIndices[] =
-    {
-        0, 1, 2,
-        0, 2, 3,
-        0, 4, 7,
-        0, 7, 3,
-        3, 7, 6,
-        3, 6, 2,
-        2, 6, 5,
-        2, 5, 1,
-        1, 5, 4,
-        1, 4, 0,
-        4, 5, 6,
-        4, 6, 7};
+{
+	0, 1, 2,
+	0, 2, 3,
+	0, 4, 7,
+	0, 7, 3,
+	3, 7, 6,
+	3, 6, 2,
+	2, 6, 5,
+	2, 5, 1,
+	1, 5, 4,
+	1, 4, 0,
+	4, 5, 6,
+	4, 6, 7
+};
 
 OpenGLEngine::OpenGLEngine()
 {
@@ -73,9 +54,8 @@ OpenGLEngine::OpenGLEngine()
 
     InitSceneObjects();
 
-    texure = new Texture("Textures/brick.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
-    texure->texUnit(shaderProgram, "tex0", 0);
 
+    LoadTextures();
 
     camera = new Camera(SCREEN_WIDTH, SCREEN_HEIGHT, glm::vec3(0.0f, 0.0f, 2.0f));
     glEnable(GL_DEPTH_TEST);
@@ -88,6 +68,7 @@ OpenGLEngine::~OpenGLEngine()
     EBOGeneral->Delete();
     shaderProgram->Delete();
     texure->Delete();
+    texureSpec->Delete();
 
     delete (VAOGeneral);
     delete (VBOGeneral);
@@ -100,6 +81,7 @@ OpenGLEngine::~OpenGLEngine()
 
     delete (camera);
     delete (texure);
+    delete (texureSpec);
 
     glfwDestroyWindow(window);
     glfwTerminate();
@@ -121,6 +103,7 @@ void OpenGLEngine::Start()
 
 		camera->Matrix(shaderProgram, "camMatrix");
         texure->Bind();
+        texureSpec->Bind();
         VAOGeneral->Bind();
         glDrawElements(GL_TRIANGLES, sizeof(indices) / sizeof(int), GL_UNSIGNED_INT, 0);
 
@@ -171,9 +154,9 @@ void OpenGLEngine::InitVertexArrays()
     VBOGeneral = new VBO(vertices, sizeof(vertices));
     EBOGeneral = new EBO(indices, sizeof(indices));
 
-    VAOGeneral->LinkAttribut(VBOGeneral, 0, 3, GL_FLOAT, 11* sizeof(float), (void *)0);
+    VAOGeneral->LinkAttribut(VBOGeneral, 0, 3, GL_FLOAT, 11 * sizeof(float), (void *)0);
     VAOGeneral->LinkAttribut(VBOGeneral, 1, 3, GL_FLOAT, 11 * sizeof(float), (void *)(3 * sizeof(float)));
-    VAOGeneral->LinkAttribut(VBOGeneral, 2, 3, GL_FLOAT, 11 * sizeof(float), (void *)(6 * sizeof(float)));
+    VAOGeneral->LinkAttribut(VBOGeneral, 2, 2, GL_FLOAT, 11 * sizeof(float), (void *)(6 * sizeof(float)));
     VAOGeneral->LinkAttribut(VBOGeneral, 3, 3, GL_FLOAT, 11 * sizeof(float), (void *)(8 * sizeof(float)));
     VAOGeneral->Unbind();
     VBOGeneral->Unbind();
@@ -212,4 +195,13 @@ void OpenGLEngine::InitSceneObjects()
     glUniformMatrix4fv(shaderProgram->GetUniform("model"), 1, GL_FALSE, glm::value_ptr(pyramidModel));
     glUniform4f(shaderProgram->GetUniform("lightColor"), lightColor.x, lightColor.y, lightColor.z, lightColor.w);
 	glUniform3f(shaderProgram->GetUniform("lightPos"), lightPos.x, lightPos.y, lightPos.z);
+}
+
+void OpenGLEngine::LoadTextures()
+{
+        texure = new Texture("Textures/planks.png", GL_TEXTURE_2D, 0, GL_RGBA, GL_UNSIGNED_BYTE);
+        texure->texUnit(shaderProgram, "tex0", 0);
+
+        texureSpec = new Texture("Textures/planksSpec.png", GL_TEXTURE_2D, 1, GL_RED, GL_UNSIGNED_BYTE);
+        texureSpec->texUnit(shaderProgram, "tex1", 1);
 }

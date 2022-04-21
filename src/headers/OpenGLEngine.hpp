@@ -33,7 +33,7 @@ class OpenGLEngine : public IEngine
         VBO*            VBOGeneral, *lightVBO;
         EBO*            EBOGeneral, *lightEBO;
         GLuint          tex0Uni;
-        Texture*        texure;
+        Texture*        texure,     *texureSpec;
 
     public:
         OpenGLEngine();
@@ -45,6 +45,7 @@ class OpenGLEngine : public IEngine
         int CreateWindow();
         void InitVertexArrays();
         void InitSceneObjects();
+        void LoadTextures();
 };
 
 #endif
